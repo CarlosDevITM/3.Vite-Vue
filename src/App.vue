@@ -1,7 +1,14 @@
 <!-- HTML-->
 <template>
-  <h1>Hola mundo</h1>
-  <h1>Prueba</h1>
+  <section>
+    <h3>Counter: {{ counter }}</h3>
+    <h3>Square: {{ squareCounter }}</h3>
+
+    <div>
+      <button v-on:click="increase">+1</button>
+      <button @click="decrease">-1</button>
+    </div>
+  </section>
 </template>
 
 <!-- CSS-->
@@ -16,5 +23,9 @@ h1 {
 <!-- JS-->
 <!-- TypeScript y el setup() de Vue.-->
 <script lang="ts" setup>
-console.log('Hola mundo');
+import { ref, computed } from 'vue';
+const counter = ref(1);
+const squareCounter = computed(() => counter.value * counter.value);
+const increase = () => (counter.value = counter.value + 1);
+const decrease = () => (counter.value = counter.value - 1);
 </script>
