@@ -25,7 +25,14 @@ h1 {
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 // Counter H3
-const counter = ref(1);
+
+//Interface
+interface userProps {
+  value: number;
+}
+//Props by App
+const props = defineProps<userProps>();
+const counter = ref(props.value);
 //Square H3
 const squareCounter = computed(() => counter.value * counter.value);
 //Buttons

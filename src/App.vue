@@ -1,7 +1,7 @@
 <template>
   <h1>Mi primera app con un componente independiente</h1>
 
-  <squareCounter></squareCounter>
+  <squareCounter :value="5"></squareCounter>
 </template>
 
 <script lang="ts" setup>
