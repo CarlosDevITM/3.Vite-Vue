@@ -22,19 +22,27 @@ h1 {
 
 <!-- JS-->
 <!-- TypeScript y el setup() de Vue.-->
-<script lang="ts" setup>
-import { computed, ref } from 'vue';
+<script lang="ts">
+import { computed, defineComponent, ref } from 'vue';
+export default defineComponent({
+  props: {
+    value: { type: Number, required: true },
+  },
+  setup(props) {
+    const counter = ref(props.value);
+    //Square H3
+    const squareCounter = computed(() => counter.value * counter.value);
 
-interface Props {
-  value: number;
-}
-const props = defineProps<Props>();
+    //Buttons
+    const increase = () => (counter.value = counter.value + 1);
+    const decrease = () => (counter.value = counter.value - 1);
 
-const counter = ref(props.value);
-
-//Square H3
-const squareCounter = computed(() => counter.value * counter.value);
-//Buttons
-const increase = () => (counter.value = counter.value + 1);
-const decrease = () => (counter.value = counter.value - 1);
+    return {
+      counter: counter,
+      squareCounter: squareCounter,
+      increase,
+      decrease,
+    };
+  },
+});
 </script>
